@@ -1,6 +1,7 @@
 #!/bin/bash
 COPY_TO=$1
 TAR_NAME=$2
+
 if ! [ -d "$COPY_TO" ]
 then
 	mkdir "$COPY_TO"
