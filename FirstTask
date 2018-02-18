@@ -1,0 +1,25 @@
+#!/bin/bash
+COPY_TO=$1
+TAR_NAME=$2
+if ! [ -d "$COPY_TO" ]
+then
+	mkdir "$COPY_TO"
+fi
+
+for COPY_EXT in $@
+do
+	list=$(find ~/ -name "*$COPY_EXT" -type f)
+	for name in $list
+	do
+		i=''
+		while [ -f "./$COPY_TO/$(basename $name .$COPY_EXT)$i.$COPY_EXT" ];
+		do
+			i=$(( $i + 1 ))	
+		done
+		cp "$name" "./$COPY_TO/$(basename $name .$COPY_EXT)$i.$COPY_EXT" 
+	done
+done
+
+tar -cf "$TAR_NAME.tar"  "./$COPY_TO"
+
+echo "Done?"
