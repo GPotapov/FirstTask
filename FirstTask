@@ -22,4 +22,4 @@ done
 
 tar -cf "$TAR_NAME.tar"  "./$COPY_TO"
 
-echo "Done?"
+echo "done"
